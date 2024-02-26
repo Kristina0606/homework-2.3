@@ -33,7 +33,9 @@ const filter = (arr, callback) => {
   }
   return newArr;
 };
-console.log(filter(array, (item) => item === 2));
+const cb = (item) => item === 2;
+
+console.log(filter(array, cb));
 
 //функция find
 
@@ -48,3 +50,37 @@ const find = (arr, callback) => {
   return newArr;
 };
 console.log(find(array, (item) => item === 2));
+
+//домашка за 20.02
+
+class Book {
+  constructor(options) {
+    this.title = options.title;
+    this.author = options.author;
+    this.year = options.year;
+  }
+
+  GetSummary() {
+    return `${this.title} была написана ${this.author} в ${this.year} году.`;
+  }
+
+  GetAge() {
+    let currentYear = new Date().getFullYear();
+    return `Со дня публикации книге ${currentYear - this.year}`;
+  }
+
+  Revise(newYear) {
+    this.year = newYear;
+    return `Книга была переиздана в ${this.year} году`;
+  }
+}
+
+const sevenGnomes = new Book({
+  title: "Семь гномов",
+  author: "Братья Гримм",
+  year: "1937",
+});
+
+console.log(sevenGnomes.GetSummary());
+console.log(sevenGnomes.GetAge());
+console.log(sevenGnomes.Revise(2000));
