@@ -84,3 +84,5 @@ const sevenGnomes = new Book({
 console.log(sevenGnomes.GetSummary());
 console.log(sevenGnomes.GetAge());
 console.log(sevenGnomes.Revise(2000));
+
+//домашка за 22.02
