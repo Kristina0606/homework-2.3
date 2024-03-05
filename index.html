@@ -4,8 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      img {
+        position: absolute;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
+    <img src="" alt="Image 1" />
+    <img src="" alt="Image 2" />
+    <img src="" alt="Image 3" />
+
+    <script>
+      let selectedImg = null; //объявляет переменную с именем selectedImg и присваивает ей значение null.
+      // т. е. в начале выполнения кода у нас нет выбранного изображения.
+      // Значение selectedImg изменяется на элемент изображения, когда мы нажимаем на изображение,
+      // и возвращается обратно к null, когда кнопка мыши отпускается. Это позволяет нам “выбрать” и “отпустить” изображение для перемещения.
+
+      document.addEventListener("mousedown", function (event) {
+        if (event.target.tagName.toLowerCase() === "img") {
+          //проверяем является ли объект на который мы клинкнули изображением
+          selectedImg = event.target;
+        }
+      });
+
+      document.addEventListener("mousemove", function (event) {
+        if (selectedImg) {
+          // Перемещаем картинку
+          selectedImg.style.left =
+            event.pageX - selectedImg.offsetWidth / 2 + "px";
+          selectedImg.style.top =
+            event.pageY - selectedImg.offsetHeight / 2 + "px";
+        }
+      });
+
+      document.addEventListener("mouseup", function () {
+        // Отпускаем картинку
+        selectedImg = null;
+      });
+    </script>
     <script src="./index.js"></script>
   </body>
 </html>
